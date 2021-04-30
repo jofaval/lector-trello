@@ -1,6 +1,13 @@
+/**
+ * Representa visualmente todo el contenido del tablero
+ * 
+ * @param {object} data 
+ * @returns 
+ */
 export const render = data => {
     const contentElement = document.querySelector('#content')
 
+    // Se añade el contenido mapeado de las listas a content
     const lists = renderLists(data);
     contentElement.innerHTML += lists;
 
@@ -10,11 +17,23 @@ export const render = data => {
     return lists
 }
 
+/**
+ * Representa visualmente la imagen de fondo del tablero
+ * 
+ * @param {object} data 
+ * @returns 
+ */
 const renderBackgroundImage = data => {
     const { bgImage } = data;
     document.body.style.backgroundImage = `url("${bgImage}")`;
 }
 
+/**
+ * Representa visualmente los detalles del tablero
+ * 
+ * @param {object} data 
+ * @returns 
+ */
 const renderDetails = data => {
     const { details } = data;
     const { name, desc } = details;
@@ -27,10 +46,22 @@ const renderDetails = data => {
     `
 }
 
+/**
+ * Representa visualmente las listas del tablero
+ * 
+ * @param {object} data 
+ * @returns 
+ */
 const renderLists = data => {
     return data?.lists?.map(renderList).join('')
 }
 
+/**
+ * Representa visualmente una lista del tablero
+ * 
+ * @param {object} data 
+ * @returns 
+ */
 const renderList = list => {
     const { name } = list;
     const cards = list?.cards?.map(renderCard).join('')
@@ -45,6 +76,12 @@ const renderList = list => {
     </div>`
 }
 
+/**
+ * Representa visualmente las tarjetas del tablero
+ * 
+ * @param {object} data 
+ * @returns 
+ */
 const renderCard = card => {
     const { name } = card;
     const parsedCard = JSON.stringify(card)
