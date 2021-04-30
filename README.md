@@ -26,3 +26,4 @@ Tiene como objetivo poder visualizar el tablero de **Trello** a través de un ar
  - **Listas**
  - **Tarjetas**
  - **Imagen de fondo**
+ - **Archivos adjuntos**
