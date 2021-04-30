@@ -4,6 +4,8 @@ export const parse = data => {
     const checklists = parseChecklist(data)
     const actions = parseActions(data)
     const comments = parseComments(data, actions)
+    const members = parseMembers(data)
+    const membership = parseMembership(data)
     const cards = parseCards(data, labels, checklists)
     const lists = parseLists(data, cards)
 
@@ -12,6 +14,8 @@ export const parse = data => {
         'labels': labels,
         'actions': actions,
         'comments': comments,
+        'members': members,
+        'membership': membership,
         'cards': cards,
         'lists': lists,
     }
@@ -28,6 +32,14 @@ const parseLabels = data => {
         const { name, color, id } = label;
         return { name, color, id }
     })
+}
+
+const parseMembers = data => {
+    return data?.members?.map(member => member)
+}
+
+const parseMembership = data => {
+    return data?.memberships?.map(membership => membership)
 }
 
 const parseChecklist = data => {
