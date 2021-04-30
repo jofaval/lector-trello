@@ -1,9 +1,11 @@
 export const parse = data => {
     const labels = parseLabels(data)
     const checklists = parseChecklist(data)
+    const cards = parseCards(data, labels, checklists)
 
     return {
         'labels': labels,
+        'cards': cards,
     }
 };
 
@@ -25,6 +27,28 @@ const parseChecklist = data => {
         })
 
         return { id, idCard, name, pos, checkItems: mappedCheckItems }
+    })
+}
+
+const parseCards = (data, labels, checklists) => {
+    return data?.cards.map((card) => {
+        const { attatchments, cover, id, idLabels: cardLabels, name,
+            idChecklists: cardChecklists, pos, url, shortUrl } = card;
+
+        const mappedLabels = cardLabels?.map(label => {
+            return labels?.find(({ id }) => label == id)
+        })
+        const mappedChecklists = cardChecklists?.map(checklist => {
+            if (!checklists) return checklist;
+
+            return checklists?.find(({ id }) => checklist == id)
+        })
+
+        return {
+            id, name, attatchments, cover, pos, url, shortUrl,
+            labels: mappedLabels, checklists: mappedChecklists,
+            
+        }
     })
 }
 
