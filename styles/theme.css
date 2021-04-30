@@ -1,0 +1,32 @@
+.list-container
+{
+    flex: 0 0 275px;
+}
+
+.list
+{
+    background-color: #ececec;
+}
+
+.list p
+{
+    margin: unset;
+}
+
+.list-items
+{
+    max-height: 80vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.list-card
+{
+    background-color: #fcfcfc;
+}
+
+#content
+{
+    display: flex;
+    flex-direction: row;
+}
