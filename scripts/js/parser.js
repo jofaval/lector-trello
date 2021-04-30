@@ -8,6 +8,7 @@ export const parse = data => {
     const membership = parseMembership(data)
     const cards = parseCards(data, labels, checklists)
     const lists = parseLists(data, cards)
+    const bgImage = parseBackgroundImage(data)
 
     return {
         'details': details,
@@ -18,8 +19,13 @@ export const parse = data => {
         'membership': membership,
         'cards': cards,
         'lists': lists,
+        'bgImage': bgImage,
     }
 };
+
+const parseBackgroundImage = data => {
+    return data?.prefs?.backgroundImage
+}
 
 const parseDetails = data => {
     const { id, idMemberCreator, dateLastActivity, name, desc, url, shortUrl } = data;
