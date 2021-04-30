@@ -3,11 +3,13 @@ export const parse = data => {
     const labels = parseLabels(data)
     const checklists = parseChecklist(data)
     const cards = parseCards(data, labels, checklists)
+    const lists = parseLists(data, cards)
 
     return {
         'details': details,
         'labels': labels,
         'cards': cards,
+        'lists': lists,
     }
 };
 
@@ -40,7 +42,7 @@ const parseChecklist = data => {
 
 const parseCards = (data, labels, checklists) => {
     return data?.cards.map((card) => {
-        const { attatchments, cover, id, idLabels: cardLabels, name,
+        const { attatchments, cover, id, idList, idLabels: cardLabels, name,
             idChecklists: cardChecklists, pos, url, shortUrl } = card;
 
         const mappedLabels = cardLabels?.map(label => {
@@ -55,8 +57,17 @@ const parseCards = (data, labels, checklists) => {
         return {
             id, name, attatchments, cover, pos, url, shortUrl,
             labels: mappedLabels, checklists: mappedChecklists,
-            
+            idList,
         }
+    })
+}
+
+const parseLists = (data, cards) => {
+    return data?.lists?.map(list => {
+        const { id } = list;
+        const listCards = cards?.filter(({ idList }) => idList == id)
+
+        return { ...list, cards: listCards }
     })
 }
 
