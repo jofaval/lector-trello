@@ -6,11 +6,12 @@ import render from "./render.js";
 /**
  * Carga el contenido del fichero JSON en el DOM
  * 
+ * @param {object} content
  * @returns void
  */
-const init = async () => {
+const init = async (content = null) => {
     // Se lee el contenido del fichero
-    let result = await leerContenidoDelFichero(filename);
+    let result = content ? await leerContenidoDelFichero(filename) : content;
     console.log('og result', result);
     
     // Se parsea
