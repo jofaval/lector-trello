@@ -18,9 +18,9 @@ export const parse = data => {
 };
 
 const parseDetails = data => {
-    const { id, dateLastActivity, name, desc, url, shortUrl } = data;
+    const { id, idMemberCreator, dateLastActivity, name, desc, url, shortUrl } = data;
 
-    return { id, dateLastActivity, name, desc, url, shortUrl };
+    return { id, idMemberCreator, dateLastActivity, name, desc, url, shortUrl };
 }
 
 const parseLabels = data => {
