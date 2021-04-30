@@ -10,8 +10,22 @@
     <link rel="stylesheet" href="styles/theme.css">
 </head>
 <body>
+    <div id="details">
+        
+    </div>
     <div id="content">
 
     </div>
+    <div class="modal" data-modal-name="modal-card">
+
+    </div>
 </body>
+<script>
+    function openModal (rawJson) {
+        const rawJson = this.card;
+        let json = JSON.parse(rawJson);
+
+        console.log('se ha abierto una tarjeta', json);
+    }
+</script>
 </html>
