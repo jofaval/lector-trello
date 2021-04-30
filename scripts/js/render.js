@@ -1,10 +1,11 @@
 export const render = data => {
-    let contentElement = document.querySelector('#content')
+    const contentElement = document.querySelector('#content')
 
     const lists = renderLists(data);
     contentElement.innerHTML += lists;
 
     const backgroundImage = renderBackgroundImage(data)
+    const details = renderDetails(data)
 
     return lists
 }
@@ -12,6 +13,18 @@ export const render = data => {
 const renderBackgroundImage = data => {
     const { bgImage } = data;
     document.body.style.backgroundImage = `url("${bgImage}")`;
+}
+
+const renderDetails = data => {
+    const { details } = data;
+    const { name, desc } = details;
+    const detailsElement = document.querySelector('#details');
+
+    document.title = `${name} | Trello`;
+
+    detailsElement.innerHTML = `
+        <h1 class="board-title p-2 text-white text-shadow font-weight-bold">${name}</h1>
+    `
 }
 
 const renderLists = data => {
