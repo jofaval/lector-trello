@@ -10,8 +10,8 @@ const init = async () => {
     let parsed = parse(result);
     console.log('resultado', parsed);
 
-    let render = render(parsed);
-    console.log('renderizado', render);
+    let rendered = render(parsed);
+    console.log('renderizado', rendered);
 }
 
 init();
