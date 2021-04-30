@@ -2,12 +2,14 @@ export const parse = data => {
     const details = parseDetails(data)
     const labels = parseLabels(data)
     const checklists = parseChecklist(data)
+    const actions = parseActions(data)
     const cards = parseCards(data, labels, checklists)
     const lists = parseLists(data, cards)
 
     return {
         'details': details,
         'labels': labels,
+        'actions': actions,
         'cards': cards,
         'lists': lists,
     }
@@ -38,6 +40,10 @@ const parseChecklist = data => {
 
         return { id, idCard, name, pos, checkItems: mappedCheckItems }
     })
+}
+
+const parseActions = data => {
+    return data?.actions?.map(action => action)
 }
 
 const parseCards = (data, labels, checklists) => {
