@@ -1,13 +1,21 @@
 export const parse = data => {
+    const details = parseDetails(data)
     const labels = parseLabels(data)
     const checklists = parseChecklist(data)
     const cards = parseCards(data, labels, checklists)
 
     return {
+        'details': details,
         'labels': labels,
         'cards': cards,
     }
 };
+
+const parseDetails = data => {
+    const { id, dateLastActivity, name, desc, url, shortUrl } = data;
+
+    return { id, dateLastActivity, name, desc, url, shortUrl };
+}
 
 const parseLabels = data => {
     return data?.labels?.map((label) => {
