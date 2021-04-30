@@ -32,4 +32,14 @@ const renderList = list => {
     </div>`
 }
 
+const renderCard = card => {
+    const { name } = card;
+    const parsedCard = JSON.stringify(card)
+
+    return `<div class="list-card bg-light shadow-sm rounded p-2 mt-2"
+        onclick='openModal()' card="${parsedCard}" data-modal-trigger="modal-card">
+        <p class="list-card-title">${name}</p>
+    </div>`
+}
+
 export default render
