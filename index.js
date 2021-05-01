@@ -2,6 +2,7 @@ import { filename } from "./config.js";
 import leerContenidoDelFichero from "./src/libs/lector.js";
 import parse from "./src/libs/parser.js";
 import render from "./src/libs/render.js";
+import scrollWithMouse from "./src/libs/scroll.js";
 
 /**
  * Carga el contenido del fichero JSON en el DOM
@@ -25,3 +26,6 @@ const init = async (content = null) => {
 
 // Siempre se inicia por defecto al terminar de cargar la página
 init();
+
+// Se añade el evento de scroll principal
+document.addEventListener('DOMContentLoaded', scrollWithMouse);
