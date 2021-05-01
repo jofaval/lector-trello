@@ -57,7 +57,7 @@ body
 {
     .modal-dialog
     {
-        max-width: max(50vw, 500px);
+        max-width: max(40vw, 750px);
     }
 }
 
@@ -65,6 +65,12 @@ body
 {
     padding: .25rem .5rem;
     font-weight: bold;
+}
+
+.modal .label
+{
+    padding: .75rem 1rem;
+    margin: .125rem .25rem;
 }
 
 .label.green {
