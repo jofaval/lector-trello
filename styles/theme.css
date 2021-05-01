@@ -57,6 +57,6 @@ body
 {
     .modal-dialog
     {
-        max-width: max(75vw, 500px);
+        max-width: max(50vw, 500px);
     }
 }
