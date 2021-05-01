@@ -15,6 +15,7 @@ html, body
 .list-container
 {
     flex: 0 0 275px;
+    pointer-events: none;
 }
 
 .list
