@@ -66,7 +66,7 @@ const renderLists = ({ lists }) => {
  * @param {object} data 
  * @returns 
  */
-const renderList = ({ name, listCards }) => {
+const renderList = ({ name, cards: listCards }) => {
     const cards = listCards?.map(renderCard).join('')
 
     return `<div class="list-container m-1">
