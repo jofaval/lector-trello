@@ -19,11 +19,29 @@ const renderLabel = ({ name, color }) => `<span class="badge label ${color}">${n
 const renderCard = json => {
     const { name, desc } = json
     const labels = renderLabels(json)
+    const attachments = renderAttachments(json);
+    const checklists = renderChecklists(json);
+    const comments = renderComments(json);
 
     return `
         ${labels}
         <p>${marked(desc)}</p>
+        ${attachments}
+        ${checklists}
+        ${comments}
     `
+}
+
+const renderAttachments = json => {
+    return ``;
+}
+
+const renderChecklists = json => {
+    return ``;
+}
+
+const renderComments = json => {
+    return ``;
 }
 
 const renderModal = json => {
