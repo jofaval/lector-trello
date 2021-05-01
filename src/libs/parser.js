@@ -26,7 +26,7 @@ export const parse = data => {
  * @param {object} data 
  * @returns string
  */
-const parseBackgroundImage = ({ prefs: backgroundImage }) => backgroundImage
+const parseBackgroundImage = ({ prefs: { backgroundImage } }) => backgroundImage
 
 /**
  * Extrae el color de fondo del tablero
@@ -34,7 +34,7 @@ const parseBackgroundImage = ({ prefs: backgroundImage }) => backgroundImage
  * @param {object} data 
  * @returns string
  */
-const parseBackgroundColor = ({ prefs: backgroundColor }) => backgroundColor
+const parseBackgroundColor = ({ prefs: { backgroundColor } }) => backgroundColor
 
 /**
  * Extrae los detalles del tablero
