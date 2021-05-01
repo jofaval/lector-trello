@@ -12,7 +12,7 @@ export const parse = data => {
     comments      = parseComments(data, actions),
     members       = parseMembers(data),
     membership    = parseMembership(data),
-    cards         = parseCards(data, labels, checklists, comments),
+    cards         = parseCards(data, labels, checklists, comments, members),
     lists         = parseLists(data, cards),
     bgImage       = parseBackgroundImage(data),
     bgColor       = parseBackgroundColor(data)
@@ -123,9 +123,9 @@ const parseComments = (data, actions) => {
  * @param {object} data 
  * @returns object
  */
-const parseCards = (data, labels, checklists, comments) => data?.cards.map((card) => {
+const parseCards = (data, labels, checklists, comments, members) => data?.cards.map((card) => {
     const { attachments, cover, id, idList, desc, idLabels: cardLabels, name,
-        idChecklists: cardChecklists, pos, url, shortUrl, closed } = card;
+        idChecklists: cardChecklists, pos, url, shortUrl, closed, idMembers } = card;
 
     // Se asocian las etiquetas con las tarjetas
     const mappedLabels = cardLabels?.map(label => {
@@ -139,11 +139,13 @@ const parseCards = (data, labels, checklists, comments) => data?.cards.map((card
     })
     // Se asocian los comentarios con las tarjetas
     const mappedComments = comments?.filter(({ idCard }) => idCard == id)
+    // Se asocian a los miembros con las tarjetas
+    const mappedMembers = members?.filter(({ id }) => idMembers?.find((member) => member == id))
 
     return {
         id, name, attachments, cover, pos, url, shortUrl,
         labels: mappedLabels, checklists: mappedChecklists,
-        idList, desc, comments: mappedComments, closed
+        idList, desc, comments: mappedComments, closed, members: mappedMembers
     }
 })
 
