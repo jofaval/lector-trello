@@ -10,6 +10,8 @@ html, body
 {
     display: flex;
     flex-direction: row;
+    overflow-x: auto;
+    height: calc(95vh - 52px);
 }
 
 .list-container

@@ -6,7 +6,7 @@
  */
 export const scrollWithMouse = () => {
     // El elemento prinicpal sobre el cual se detecta modifica el scroll
-    const element = document.querySelector('html');
+    const element = document.querySelector('#content');
     element.style.cursor = 'grab';
 
     let pos = { top: 0, left: 0, x: 0, y: 0 };
