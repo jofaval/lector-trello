@@ -9,7 +9,7 @@ export const render = data => {
 
     // Se añade el contenido mapeado de las listas a content
     const lists = renderLists(data);
-    contentElement.innerHTML += lists;
+    contentElement.innerHTML = lists;
 
     const background = renderBackground(data)
     const details = renderDetails(data)
