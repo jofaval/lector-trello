@@ -24,7 +24,12 @@ export const render = data => {
  * @returns 
  */
 const renderBackground = ({ bgImage, bgColor }) => {
+    const element = document.querySelector('html')
+
+    element.style.backgroundImage = `url("${bgImage}")`;
     document.body.style.backgroundImage = `url("${bgImage}")`;
+
+    element.style.backgroundColor = `${bgColor}`;
     document.body.style.backgroundColor = `${bgColor}`;
 }
 
