@@ -1,2 +1,3 @@
 data/*
 scripts/js/config.js
+node_modules/*
