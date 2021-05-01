@@ -60,3 +60,49 @@ body
         max-width: max(50vw, 500px);
     }
 }
+
+.label
+{
+    padding: .25rem .5rem;
+    font-weight: bold;
+}
+
+.label.green {
+    background-color: #61bd4f;
+}
+
+.label.yellow {
+    background-color: #f2d600;
+}
+
+.label.orange {
+    background-color: #ff9f1a;
+}
+
+.label.red {
+    background-color: #b04632;
+}
+
+.label.purple {
+    background-color: #c377e0;
+}
+
+.label.blue {
+    background-color: #0079bf;
+}
+
+.label.sky {
+    background-color: #ff78cb;
+}
+
+.label.lime {
+    background-color: #00c2e0;
+}
+
+.label.pink {
+    background-color: #51e898;
+}
+
+.label.black {
+    background-color: #344563;
+}
