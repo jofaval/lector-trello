@@ -7,12 +7,15 @@ import scrollWithMouse from "./src/libs/scroll.js";
 /**
  * Carga el contenido del fichero JSON en el DOM
  * 
+ * @param {string} ruta
  * @param {object} content
  * @returns void
  */
-const init = async (content = null) => {
+const init = async (ruta = null, content = null) => {
     // Se lee el contenido del fichero
-    let result = content ? content : await leerContenidoDelFichero(filename);
+    let result = content ? content : await leerContenidoDelFichero(
+        ruta ? ruta : filename
+    );
     console.log('contenido', result);
     
     // Se parsea
