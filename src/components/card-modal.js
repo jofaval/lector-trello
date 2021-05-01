@@ -1,4 +1,4 @@
-import renderMembers from "./member.js";
+import renderMembers, { renderMember } from "./member.js";
 
 /**
  * Representa visualmente el modal de una tarjeta
@@ -67,9 +67,14 @@ const renderChecklist = ({ id, name, checkItems }) =>
 const renderChecklists = ({ checklists }) => 
 `<div class="checklist">${checklists.map(renderChecklist).join('')}</div>`;
 
-const renderComment = ({ text }) => 
-`<div class="comment border bg-white shadow-sm p-3 my-3">
-    ${marked(text.replaceAll('\n', `<br />`))}
+const renderComment = ({ id, member, text }) => 
+`<div class="comment my-3 d-flex" id="${id}">
+    <div class="comment-creator">
+        ${renderMember(member)}
+    </div>
+    <div class="comment-content border bg-white w-100 shadow-sm p-3">
+        ${marked(text.replaceAll('\n', `<br />`))}
+    </div>
 </div>`
 
 const renderComments = ({ comments }) => 
