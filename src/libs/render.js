@@ -57,7 +57,7 @@ const renderDetails = ({ details: { name, desc } }) => {
  * @returns 
  */
 const renderLists = ({ lists }) => {
-    return lists?.map(renderList).join('')
+    return lists?.filter(({ closed }) => !closed)?.map(renderList).join('')
 }
 
 /**
@@ -67,7 +67,7 @@ const renderLists = ({ lists }) => {
  * @returns 
  */
 const renderList = ({ name, cards: listCards }) => {
-    const cards = listCards?.map(renderCard).join('')
+    const cards = listCards?.filter(({ closed }) => !closed)?.map(renderCard).join('')
 
     return `<div class="list-container m-1">
         <div class="list shadow-sm border rounded p-2">
