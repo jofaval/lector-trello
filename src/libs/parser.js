@@ -12,7 +12,7 @@ export const parse = data => {
     const comments = parseComments(data, actions)
     const members = parseMembers(data)
     const membership = parseMembership(data)
-    const cards = parseCards(data, labels, checklists)
+    const cards = parseCards(data, labels, checklists, comments)
     const lists = parseLists(data, cards)
     const bgImage = parseBackgroundImage(data)
 
@@ -138,7 +138,7 @@ const parseComments = (data, actions) => {
  * @param {object} data 
  * @returns object
  */
-const parseCards = (data, labels, checklists) => {
+const parseCards = (data, labels, checklists, comments) => {
     return data?.cards.map((card) => {
         const { attatchments, cover, id, idList, desc, idLabels: cardLabels, name,
             idChecklists: cardChecklists, pos, url, shortUrl } = card;
@@ -153,11 +153,13 @@ const parseCards = (data, labels, checklists) => {
 
             return checklists?.find(({ id }) => checklist == id)
         })
+        // Se asocian los comentarios con las tarjetas
+        const mappedComments = comments?.filter(({ idCard }) => idCard == id)
 
         return {
             id, name, attatchments, cover, pos, url, shortUrl,
             labels: mappedLabels, checklists: mappedChecklists,
-            idList, desc,
+            idList, desc, comments: mappedComments
         }
     })
 }
