@@ -71,7 +71,7 @@ const renderComment = ({ text }) =>
 </div>`
 
 const renderComments = ({ comments }) => 
-`<div class="comments">${comments?.map(renderComment)}</div>`
+`<div class="comments">${comments?.map(renderComment).join('')}</div>`
 
 const renderModal = json => {
     const { name, desc } = json
