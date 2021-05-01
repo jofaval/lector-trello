@@ -6,7 +6,7 @@
  */
 export const scrollWithMouse = () => {
     // El elemento prinicpal sobre el cual se detecta modifica el scroll
-    const element = document.querySelector('#content');
+    const element = document.querySelector('html');
     element.style.cursor = 'grab';
 
     let pos = { top: 0, left: 0, x: 0, y: 0 };
@@ -29,6 +29,8 @@ export const scrollWithMouse = () => {
             y: e.clientY,
         };
 
+        // console.log('se presiona el ratón', pos);
+
         document.addEventListener('mousemove', mouseMoveHandler);
         document.addEventListener('mouseup', mouseUpHandler);
     };
@@ -47,6 +49,8 @@ export const scrollWithMouse = () => {
         // Scroll the element
         element.scrollTop = pos.top - dy;
         element.scrollLeft = pos.left - dx;
+        
+        // console.log('se mueve el ratón', dx, dy);
     };
 
     /**
@@ -58,6 +62,8 @@ export const scrollWithMouse = () => {
     const mouseUpHandler = () => {
         element.style.cursor = 'grab';
         element.style.removeProperty('user-select');
+
+        // console.log('se libera el ratón');
 
         document.removeEventListener('mousemove', mouseMoveHandler);
         document.removeEventListener('mouseup', mouseUpHandler);
