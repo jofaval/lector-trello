@@ -17,16 +17,37 @@
     <div id="content">
 
     </div>
-    <div class="modal" data-modal-name="modal-card">
+    <div class="modal" id="modal-card" data-modal-name="modal-card">
 
     </div>
 </body>
+<script src="./src/components/card-modal.js"></script>
 <script defer type="application/javascript">
-    let openModal = function () {
-        const rawJson = this.card;
-        let json = JSON.parse(rawJson);
+    let openModal = function (div) {
+        const rawJson = div.getAttribute('card');
+        // console.log('rawJson', rawJson);
+
+        let json = JSON.parse(
+            JSON.parse(rawJson)
+        );
 
         console.log('se ha abierto una tarjeta', json);
+
+        const modalCard = document.querySelector('#modal-card');
+        console.log('modalCard', modalCard);
+        // Se renderiza el modal de la carta
+        modalCard.innerHTML = renderCardModal(json);
+
+        // Se muestra visible el contenedor
+        modalCard?.classList?.remove('d-none')
+        modalCard?.classList?.add('d-block')
+        
+        // Se muestra visible el modal
+        const modal = modalCard?.querySelector('.modal')
+        console.log('modal', modal);
+        modal?.classList?.remove('d-none')
+        modal?.classList?.add('d-block')
+
     }
 </script>
 </html>
