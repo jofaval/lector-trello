@@ -28,6 +28,7 @@ const renderCard = json => {
         <p>${marked(desc)}</p>
         ${attachments}
         ${checklists}
+        <div class="py-3 w-100">&nbsp;</div>
         ${comments}
     `
 }
@@ -45,7 +46,7 @@ const renderChecklistItem = ({ id, name, state }) =>
 </div>`
 
 const renderChecklist = ({ id, name, checkItems }) => 
-`<div class="checklist my-3 card p-3" id="${id}">
+`<div class="checklist my-3 card border-0 p-3" id="${id}">
     <span class="checklist-title h4">${name}</span>
     <div class="checklist-items h6">${checkItems.map(renderChecklistItem).join('')}</div>
 </div>`;
@@ -53,9 +54,13 @@ const renderChecklist = ({ id, name, checkItems }) =>
 const renderChecklists = ({ checklists }) => 
 `<div class="checklist">${checklists.map(renderChecklist).join('')}</div>`;
 
-const renderComments = json => {
-    return ``;
-}
+const renderComment = ({ text }) => 
+`<div class="comment border bg-white shadow-sm p-3 my-3">
+    ${marked(text.replaceAll('\n', `<br />`))}
+</div>`
+
+const renderComments = ({ comments }) => 
+`<div class="comments">${comments?.map(renderComment)}</div>`
 
 const renderModal = json => {
     const { name, desc } = json
