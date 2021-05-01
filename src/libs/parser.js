@@ -9,9 +9,9 @@ export const parse = data => {
     labels        = parseLabels(data),
     checklists    = parseChecklist(data),
     actions       = parseActions(data),
-    comments      = parseComments(data, actions),
     members       = parseMembers(data),
     membership    = parseMembership(data),
+    comments      = parseComments(data, actions, members),
     cards         = parseCards(data, labels, checklists, comments, members),
     lists         = parseLists(data, cards),
     bgImage       = parseBackgroundImage(data),
@@ -106,14 +106,16 @@ const parseActions = ({ actions }) => actions
  * @param {object} data 
  * @returns object
  */
-const parseComments = (data, actions) => {
+const parseComments = (data, actions, members) => {
     // Se extraen las acciones que son comentarios
     let comments = actions?.filter(({ type }) => type == 'commentCard')
 
     return comments?.map?.(comment => {
         const { id, idMemberCreator, data: { text, card: { id: idCard } } } = comment;
 
-        return { id, idCard, idMemberCreator, text };
+        const member = members?.find(({ id }) => id == idMemberCreator);
+
+        return { id, idCard, idMemberCreator, member, text };
     })
 }
 
