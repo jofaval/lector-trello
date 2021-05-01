@@ -4,7 +4,7 @@
  * @param {object} json 
  * @returns string
  */
-const renderCardModal = json => {
+export const renderCardModal = json => {
     return renderModal(json);
 }
 
@@ -82,6 +82,7 @@ const renderModal = json => {
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">${name}</h5>
+                    ${members}
                     <button type="button" class="btn-close" data-bs-dismiss="modal-card" onclick="closeCardModal()" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -95,3 +96,5 @@ const renderModal = json => {
     </div>
     `
 }
+
+export default renderCardModal;
