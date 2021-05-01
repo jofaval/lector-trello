@@ -5,6 +5,8 @@
  * @returns object
  */
 export const leerContenidoDelFichero = async ruta => {
+    // console.log('se va a leer el contenido de', ruta);
+
     const content = await fetch(ruta)
         .then(onLecturaFichero)
         .catch(onLecturaFicheroError);
@@ -34,7 +36,7 @@ const onLecturaFichero = async _res => {
  * @returns void
  */
 const onLecturaFicheroError = _res => {
-    // console.error('error respuesta', _res);
+    console.error('error respuesta', _res);
 }
 
 export default leerContenidoDelFichero;

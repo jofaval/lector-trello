@@ -1,7 +1,7 @@
-import { leerContenidoDelFichero } from "./lector.js";
 import { filename } from "./config.js";
-import parse from "./parser.js";
-import render from "./render.js";
+import leerContenidoDelFichero from "./src/libs/lector.js";
+import parse from "./src/libs/parser.js";
+import render from "./src/libs/render.js";
 
 /**
  * Carga el contenido del fichero JSON en el DOM
@@ -11,12 +11,12 @@ import render from "./render.js";
  */
 const init = async (content = null) => {
     // Se lee el contenido del fichero
-    let result = content ? await leerContenidoDelFichero(filename) : content;
-    console.log('og result', result);
+    let result = content ? content : await leerContenidoDelFichero(filename);
+    console.log('contenido', result);
     
     // Se parsea
     let parsed = parse(result);
-    console.log('resultado', parsed);
+    console.log('parseado', parsed);
 
     // Y se representa visualmente
     let rendered = render(parsed);
