@@ -40,9 +40,7 @@ const renderBackground = ({ bgImage, bgColor }) => {
  * @param {object} data 
  * @returns 
  */
-const renderDetails = data => {
-    const { details } = data;
-    const { name, desc } = details;
+const renderDetails = ({ details: { name, desc } }) => {
     const detailsElement = document.querySelector('#details');
 
     document.title = `${name} | Trello`;
@@ -58,8 +56,8 @@ const renderDetails = data => {
  * @param {object} data 
  * @returns 
  */
-const renderLists = data => {
-    return data?.lists?.map(renderList).join('')
+const renderLists = ({ lists }) => {
+    return lists?.map(renderList).join('')
 }
 
 /**
@@ -68,9 +66,8 @@ const renderLists = data => {
  * @param {object} data 
  * @returns 
  */
-const renderList = list => {
-    const { name } = list;
-    const cards = list?.cards?.map(renderCard).join('')
+const renderList = ({ name, listCards }) => {
+    const cards = listCards?.map(renderCard).join('')
 
     return `<div class="list-container m-1">
         <div class="list shadow-sm border rounded p-2">
@@ -107,12 +104,7 @@ const renderCard = card => {
     </div>`
 }
 
-export const renderLabels = ({ labels }) => {
-    const mappedLabels = labels?.map(renderLabel)?.join('')
-
-    return `<div class="labels">${mappedLabels}</div>`;
-}
-
+export const renderLabels = ({ labels }) => `<div class="labels">${labels?.map(renderLabel)?.join('')}</div>`;
 const renderLabel = ({ name, color }) => `<span class="badge label ${color}">${name}</span>`
 
 export default render
