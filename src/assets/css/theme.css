@@ -21,6 +21,7 @@ html, body
 .list
 {
     background-color: #ececec;
+    pointer-events: all;
 }
 
 .list p
