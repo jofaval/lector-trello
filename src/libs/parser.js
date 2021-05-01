@@ -5,30 +5,19 @@
  * @returns object
  */
 export const parse = data => {
-    const details = parseDetails(data)
-    const labels = parseLabels(data)
-    const checklists = parseChecklist(data)
-    const actions = parseActions(data)
-    const comments = parseComments(data, actions)
-    const members = parseMembers(data)
-    const membership = parseMembership(data)
-    const cards = parseCards(data, labels, checklists, comments)
-    const lists = parseLists(data, cards)
-    const bgImage = parseBackgroundImage(data)
-    const bgColor = parseBackgroundColor(data)
+    const details = parseDetails(data),
+    labels = parseLabels(data),
+    checklists = parseChecklist(data),
+    actions = parseActions(data),
+    comments = parseComments(data, actions),
+    members = parseMembers(data),
+    membership = parseMembership(data),
+    cards = parseCards(data, labels, checklists, comments),
+    lists = parseLists(data, cards),
+    bgImage = parseBackgroundImage(data),
+    bgColor = parseBackgroundColor(data)
 
-    return {
-        'details': details,
-        'labels': labels,
-        'actions': actions,
-        'comments': comments,
-        'members': members,
-        'membership': membership,
-        'cards': cards,
-        'lists': lists,
-        'bgImage': bgImage,
-        'bgColor': bgColor,
-    }
+    return { details, labels, actions, comments, members, membership, cards, lists, bgImage, bgColor, }
 };
 
 /**
@@ -37,9 +26,7 @@ export const parse = data => {
  * @param {object} data 
  * @returns string
  */
-const parseBackgroundImage = data => {
-    return data?.prefs?.backgroundImage
-}
+const parseBackgroundImage = ({ prefs: backgroundImage }) => backgroundImage
 
 /**
  * Extrae el color de fondo del tablero
@@ -47,9 +34,7 @@ const parseBackgroundImage = data => {
  * @param {object} data 
  * @returns string
  */
-const parseBackgroundColor = data => {
-    return data?.prefs?.backgroundColor
-}
+const parseBackgroundColor = ({ prefs: backgroundColor }) => backgroundColor
 
 /**
  * Extrae los detalles del tablero
@@ -69,12 +54,10 @@ const parseDetails = data => {
  * @param {object} data 
  * @returns object
  */
-const parseLabels = data => {
-    return data?.labels?.map((label) => {
-        const { name, color, id } = label;
-        return { name, color, id }
-    })
-}
+const parseLabels = data => data?.labels?.map((label) => {
+    const { name, color, id } = label;
+    return { name, color, id }
+})
 
 /**
  * Extrae los miembros del tablero
@@ -82,9 +65,7 @@ const parseLabels = data => {
  * @param {object} data 
  * @returns object
  */
-const parseMembers = data => {
-    return data?.members?.map(member => member)
-}
+const parseMembers = ({ members }) => members
 
 /**
  * Extrae los roles del tablero
@@ -92,9 +73,7 @@ const parseMembers = data => {
  * @param {object} data 
  * @returns object
  */
-const parseMembership = data => {
-    return data?.memberships?.map(membership => membership)
-}
+const parseMembership = ({ memberships }) => memberships
 
 /**
  * Extrae las listas de tareas del tablero
@@ -102,20 +81,16 @@ const parseMembership = data => {
  * @param {object} data 
  * @returns object
  */
-const parseChecklist = data => {
-    return data?.checklists?.map((checklist) => {
-        const { name, id, idCard, pos, checkItems } = checklist
+const parseChecklist = data => data?.checklists?.map(({ name, id, idCard, pos, checkItems }) => {
+    // De cada lista de tareas se mapean sus elementos
+    const mappedCheckItems = checkItems.map(checkItem => {
+        const { id, name, post, state } = checkItem;
 
-        // De cada lista de tareas se mapean sus elementos
-        const mappedCheckItems = checkItems.map(checkItem => {
-            const { id, name, post, state } = checkItem;
-
-            return { id, name, post, state: state == 'complete' }
-        })
-
-        return { id, idCard, name, pos, checkItems: mappedCheckItems }
+        return { id, name, post, state: state == 'complete' }
     })
-}
+
+    return { id, idCard, name, pos, checkItems: mappedCheckItems }
+})
 
 /**
  * Extrae las acciones del tablero
@@ -123,9 +98,7 @@ const parseChecklist = data => {
  * @param {object} data 
  * @returns object
  */
-const parseActions = data => {
-    return data?.actions?.map(action => action)
-}
+const parseActions = ({ actions }) => actions
 
 /**
  * Extrae los comentarios del tablero
@@ -150,31 +123,29 @@ const parseComments = (data, actions) => {
  * @param {object} data 
  * @returns object
  */
-const parseCards = (data, labels, checklists, comments) => {
-    return data?.cards.map((card) => {
-        const { attachments, cover, id, idList, desc, idLabels: cardLabels, name,
-            idChecklists: cardChecklists, pos, url, shortUrl, closed } = card;
+const parseCards = (data, labels, checklists, comments) => data?.cards.map((card) => {
+    const { attachments, cover, id, idList, desc, idLabels: cardLabels, name,
+        idChecklists: cardChecklists, pos, url, shortUrl, closed } = card;
 
-        // Se asocian las etiquetas con las tarjetas
-        const mappedLabels = cardLabels?.map(label => {
-            return labels?.find(({ id }) => label == id)
-        })
-        // Se asocian las listas de tareas con las tarjetas
-        const mappedChecklists = cardChecklists?.map(checklist => {
-            if (!checklists) return checklist;
-
-            return checklists?.find(({ id }) => checklist == id)
-        })
-        // Se asocian los comentarios con las tarjetas
-        const mappedComments = comments?.filter(({ idCard }) => idCard == id)
-
-        return {
-            id, name, attachments, cover, pos, url, shortUrl,
-            labels: mappedLabels, checklists: mappedChecklists,
-            idList, desc, comments: mappedComments, closed
-        }
+    // Se asocian las etiquetas con las tarjetas
+    const mappedLabels = cardLabels?.map(label => {
+        return labels?.find(({ id }) => label == id)
     })
-}
+    // Se asocian las listas de tareas con las tarjetas
+    const mappedChecklists = cardChecklists?.map(checklist => {
+        if (!checklists) return checklist;
+
+        return checklists?.find(({ id }) => checklist == id)
+    })
+    // Se asocian los comentarios con las tarjetas
+    const mappedComments = comments?.filter(({ idCard }) => idCard == id)
+
+    return {
+        id, name, attachments, cover, pos, url, shortUrl,
+        labels: mappedLabels, checklists: mappedChecklists,
+        idList, desc, comments: mappedComments, closed
+    }
+})
 
 /**
  * Extrae las listas del tablero
@@ -182,14 +153,12 @@ const parseCards = (data, labels, checklists, comments) => {
  * @param {object} data 
  * @returns object
  */
-const parseLists = (data, cards) => {
-    return data?.lists?.map(list => {
-        const { id } = list;
-        // Se asocian las tarjetas con sus listas
-        const listCards = cards?.filter(({ idList }) => idList == id)
+const parseLists = (data, cards) => data?.lists?.map(list => {
+    const { id } = list;
+    // Se asocian las tarjetas con sus listas
+    const listCards = cards?.filter(({ idList }) => idList == id)
 
-        return { ...list, cards: listCards }
-    })
-}
+    return { ...list, cards: listCards }
+})
 
 export default parse;
