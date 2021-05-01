@@ -83,11 +83,17 @@ const renderList = list => {
  * @returns 
  */
 const renderCard = card => {
+    // console.log('card JSON', card);
+
     const { name } = card;
-    const parsedCard = JSON.stringify(card)
+
+    const parsedCard = JSON.stringify( // Convierte a string
+        JSON.stringify(card) // Convierte a objeto JSON
+    )
+    // console.log('card JSON string', parsedCard);
 
     return `<div class="list-card bg-light shadow-sm rounded p-2 mt-2"
-        onclick='openModal()' card="${parsedCard}" data-modal-trigger="modal-card">
+        onclick='openModal(this)' card='${parsedCard}' data-modal-trigger="modal-card">
         <p class="list-card-title">${name}</p>
     </div>`
 }
