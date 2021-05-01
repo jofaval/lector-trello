@@ -16,3 +16,19 @@ Detalles del tablero *(título, descripción, etc.)*, Las etiquetas, Listas de t
 
 ### Renderizar
 Detalles del tablero, Las etiquetas, Listas de tareas, Acciones de los miembros, Comentarios de las tarjetas, Miembros, Roles de miembros, Listas, Tarjetas, Imagen de fondo, Archivos adjuntos
+
+## Asistencia
+### ¿Cómo funciona?
+ - Se ha de crear a nivel raíz un fichero *config.js*
+ - Dichero fichero contendrá la ruta al /data/trello.json
+
+*Contenido del fichero *config.js*:*
+
+    export const filename = '/data/fichero-trello.json'
+
+    console.log('filename', filename);
+
+    // En caso de querer configurar la apertura inmediata de una tarjeta
+    document.querySelectorAll('.list-card')[num_tarjeta].click()
+
+    export default filename;
