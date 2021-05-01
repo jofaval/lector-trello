@@ -1,3 +1,5 @@
+import renderLabels from "../components/label.js";
+import renderLists from "../components/list.js";
 import renderMembers from "../components/member.js";
 
 /**
@@ -42,7 +44,7 @@ const renderBackground = ({ bgImage, bgColor }) => {
  * @param {object} data 
  * @returns 
  */
-const renderDetails = ({ details: { name, desc }, members }) => {
+const renderDetails = ({ details: { name, desc }, members, labels }) => {
     const detailsElement = document.querySelector('#details');
 
     document.title = `${name} | Trello`;
@@ -50,64 +52,8 @@ const renderDetails = ({ details: { name, desc }, members }) => {
     detailsElement.innerHTML = `
         <h1 class="board-title p-2 text-white text-shadow font-weight-bold">${name}</h1>
         ${renderMembers({ members })}
+        ${renderLabels({ labels })}
     `
 }
-
-/**
- * Representa visualmente las listas del tablero
- * 
- * @param {object} data 
- * @returns 
- */
-const renderLists = ({ lists }) => {
-    return lists?.filter(({ closed }) => !closed)?.map(renderList).join('')
-}
-
-/**
- * Representa visualmente una lista del tablero
- * 
- * @param {object} data 
- * @returns 
- */
-const renderList = ({ name, cards: listCards, id }) => {
-    const cards = listCards?.filter(({ closed }) => !closed)?.map(renderCard).join('')
-
-    return `<div class="list-container m-1">
-        <div class="list shadow-sm border rounded p-2" id="${id}">
-            <p class="list-title">${name}</p>
-            <div class="list-items">
-                ${cards}
-            </div>
-        </div>
-    </div>`
-}
-
-/**
- * Representa visualmente las tarjetas del tablero
- * 
- * @param {object} data 
- * @returns 
- */
-const renderCard = card => {
-    // console.log('card JSON', card);
-
-    const { id, name } = card;
-
-    const parsedCard = JSON.stringify( // Convierte a string
-        JSON.stringify(card) // Convierte a objeto JSON
-    )
-    // console.log('card JSON string', parsedCard);
-
-    const labels = renderLabels(card)
-
-    return `<div class="list-card bg-light shadow-sm rounded p-2 mt-2" id="${id}"
-        onclick='openModal(this)' card='${parsedCard}' data-modal-trigger="modal-card">
-        ${labels}
-        <p class="list-card-title">${name}</p>
-    </div>`
-}
-
-export const renderLabels = ({ labels }) => `<div class="labels">${labels?.map(renderLabel)?.join('')}</div>`;
-const renderLabel = ({ name, color }) => `<span class="badge label ${color}">${name}</span>`
 
 export default render

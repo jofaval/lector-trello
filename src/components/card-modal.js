@@ -1,4 +1,8 @@
-import renderMembers, { renderMember } from "./member.js";
+import renderLabels from "./label.js";
+import renderAttachments from "./attachment.js";
+import renderChecklists from "./checklist.js";
+import renderComments from "./comment.js";
+import renderMembers from "./member.js";
 
 /**
  * Representa visualmente el modal de una tarjeta
@@ -9,14 +13,6 @@ import renderMembers, { renderMember } from "./member.js";
 export const renderCardModal = json => {
     return renderModal(json);
 }
-
-const renderLabels = ({ labels }) => {
-    const mappedLabels = labels?.map(renderLabel)?.join('')
-
-    return `<div class="labels">${mappedLabels}</div>`;
-}
-
-const renderLabel = ({ name, color }) => `<span class="badge label ${color}">${name}</span>`
 
 const renderCard = json => {
     const { name, desc } = json
@@ -34,51 +30,6 @@ const renderCard = json => {
         ${comments}
     `
 }
-
-const renderAttachment = ({ id, idMember, name, url, fileName, date, mimeType }) =>
-`<div class="attachment p-3 my-2" title="${name}" id="${id}">
-    <a href="${url}" class="btn text-gray" onclick="window.open('${url}', '_blank')">
-        <span class="attachment-title">${name ? name : fileName}</span>
-    </a>
-</div>`
-
-const renderAttachments = ({ attachments }) => 
-`<div class="attachments">
-    <span class="attachments-title h3">Archivos adjuntos</span>
-    <div class="attachment-files">
-        ${attachments?.map(renderAttachment).join('')}
-    </div>
-</div>`
-
-const renderChecklistItem = ({ id, name, state }) => 
-`<div class="checklist-item">
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" ${state ? 'checked' : ''} id="${id}">
-        <label class="form-check-label mb-0" for="${id}">${marked(name)}</label>
-    </div>
-</div>`
-
-const renderChecklist = ({ id, name, checkItems }) => 
-`<div class="checklist my-3 card border-0 p-3" id="${id}">
-    <span class="checklist-title h4">${name}</span>
-    <div class="checklist-items h6">${checkItems.map(renderChecklistItem).join('')}</div>
-</div>`;
-
-const renderChecklists = ({ checklists }) => 
-`<div class="checklist">${checklists.map(renderChecklist).join('')}</div>`;
-
-const renderComment = ({ id, member, text }) => 
-`<div class="comment my-3 d-flex" id="${id}">
-    <div class="comment-creator">
-        ${renderMember(member)}
-    </div>
-    <div class="comment-content border bg-white w-100 shadow-sm p-3">
-        ${marked(text.replaceAll('\n', `<br />`))}
-    </div>
-</div>`
-
-const renderComments = ({ comments }) => 
-`<div class="comments">${comments?.map(renderComment).join('')}</div>`
 
 const renderModal = json => {
     const { name, desc } = json
