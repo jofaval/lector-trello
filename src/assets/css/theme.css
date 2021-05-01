@@ -37,6 +37,7 @@ html, body
 .list-card
 {
     background-color: #fcfcfc;
+    cursor: pointer;
 }
 
 .list-card p
@@ -65,6 +66,7 @@ html, body
 .label
 {
     padding: .25rem .5rem;
+    margin: .125rem;
     font-weight: bold;
     font-size: small;
 }
@@ -88,7 +90,7 @@ html, body
 }
 
 .label.red {
-    background-color: #b04632;
+    background-color: #eb5a46;
 }
 
 .label.purple {
