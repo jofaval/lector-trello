@@ -50,5 +50,20 @@
         modal?.classList?.add('d-block')
 
     }
+
+    let closeCardModal = function () {
+        const modal = document.querySelector('.modal')
+
+        modal.remove();
+    }
+
+    let stopPropagation = function (evt) {
+        const event = evt || window.event;
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        return false;
+    }
 </script>
 </html>
