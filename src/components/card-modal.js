@@ -36,9 +36,22 @@ const renderAttachments = json => {
     return ``;
 }
 
-const renderChecklists = json => {
-    return ``;
-}
+const renderChecklistItem = ({ id, name, state }) => 
+`<div class="checklist-item">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" ${state ? 'checked' : ''} id="${id}">
+        <label class="form-check-label mb-0" for="${id}">${marked(name)}</label>
+    </div>
+</div>`
+
+const renderChecklist = ({ id, name, checkItems }) => 
+`<div class="checklist my-3 card p-3" id="${id}">
+    <span class="checklist-title h4">${name}</span>
+    <div class="checklist-items h6">${checkItems.map(renderChecklistItem).join('')}</div>
+</div>`;
+
+const renderChecklists = ({ checklists }) => 
+`<div class="checklist">${checklists.map(renderChecklist).join('')}</div>`;
 
 const renderComments = json => {
     return ``;
