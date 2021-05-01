@@ -92,10 +92,21 @@ const renderCard = card => {
     )
     // console.log('card JSON string', parsedCard);
 
+    const labels = renderLabels(card)
+
     return `<div class="list-card bg-light shadow-sm rounded p-2 mt-2"
         onclick='openModal(this)' card='${parsedCard}' data-modal-trigger="modal-card">
+        ${labels}
         <p class="list-card-title">${name}</p>
     </div>`
 }
+
+export const renderLabels = ({ labels }) => {
+    const mappedLabels = labels?.map(renderLabel)?.join('')
+
+    return `<div class="labels">${mappedLabels}</div>`;
+}
+
+const renderLabel = ({ name, color }) => `<span class="badge label ${color}">${name}</span>`
 
 export default render
