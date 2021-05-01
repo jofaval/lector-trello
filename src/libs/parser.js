@@ -152,7 +152,7 @@ const parseComments = (data, actions) => {
  */
 const parseCards = (data, labels, checklists, comments) => {
     return data?.cards.map((card) => {
-        const { attatchments, cover, id, idList, desc, idLabels: cardLabels, name,
+        const { attachments, cover, id, idList, desc, idLabels: cardLabels, name,
             idChecklists: cardChecklists, pos, url, shortUrl } = card;
 
         // Se asocian las etiquetas con las tarjetas
@@ -169,7 +169,7 @@ const parseCards = (data, labels, checklists, comments) => {
         const mappedComments = comments?.filter(({ idCard }) => idCard == id)
 
         return {
-            id, name, attatchments, cover, pos, url, shortUrl,
+            id, name, attachments, cover, pos, url, shortUrl,
             labels: mappedLabels, checklists: mappedChecklists,
             idList, desc, comments: mappedComments
         }
