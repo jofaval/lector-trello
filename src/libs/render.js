@@ -30,7 +30,7 @@ const renderBackground = ({ bgImage, bgColor }) => {
     element.style.backgroundImage = `url("${bgImage}")`;
     // document.body.style.backgroundImage = `url("${bgImage}")`;
 
-    /* element.style.backgroundColor = `${bgColor}`; */
+    element.style.backgroundColor = `${bgColor}`;
     document.body.style.backgroundColor = `${bgColor}`;
 }
 
