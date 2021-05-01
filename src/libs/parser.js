@@ -6,16 +6,16 @@
  */
 export const parse = data => {
     const details = parseDetails(data),
-    labels = parseLabels(data),
-    checklists = parseChecklist(data),
-    actions = parseActions(data),
-    comments = parseComments(data, actions),
-    members = parseMembers(data),
-    membership = parseMembership(data),
-    cards = parseCards(data, labels, checklists, comments),
-    lists = parseLists(data, cards),
-    bgImage = parseBackgroundImage(data),
-    bgColor = parseBackgroundColor(data)
+    labels        = parseLabels(data),
+    checklists    = parseChecklist(data),
+    actions       = parseActions(data),
+    comments      = parseComments(data, actions),
+    members       = parseMembers(data),
+    membership    = parseMembership(data),
+    cards         = parseCards(data, labels, checklists, comments),
+    lists         = parseLists(data, cards),
+    bgImage       = parseBackgroundImage(data),
+    bgColor       = parseBackgroundColor(data)
 
     return { details, labels, actions, comments, members, membership, cards, lists, bgImage, bgColor, }
 };
