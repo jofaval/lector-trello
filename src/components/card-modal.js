@@ -1,3 +1,5 @@
+import renderMembers from "./member.js";
+
 /**
  * Representa visualmente el modal de una tarjeta
  * 
@@ -75,6 +77,8 @@ const renderComments = ({ comments }) =>
 
 const renderModal = json => {
     const { name, desc } = json
+
+    const members = renderMembers(json);
 
     return `
     <div class="modal" tabindex="-1" onclick="closeCardModal()">

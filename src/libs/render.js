@@ -1,3 +1,5 @@
+import renderMembers from "../components/member.js";
+
 /**
  * Representa visualmente todo el contenido del tablero
  * 
@@ -7,12 +9,12 @@
 export const render = data => {
     const contentElement = document.querySelector('#content')
 
+    const details = renderDetails(data)
+    const background = renderBackground(data)
+
     // Se añade el contenido mapeado de las listas a content
     const lists = renderLists(data);
     contentElement.innerHTML = lists;
-
-    const background = renderBackground(data)
-    const details = renderDetails(data)
 
     return lists
 }
@@ -40,13 +42,14 @@ const renderBackground = ({ bgImage, bgColor }) => {
  * @param {object} data 
  * @returns 
  */
-const renderDetails = ({ details: { name, desc } }) => {
+const renderDetails = ({ details: { name, desc }, members }) => {
     const detailsElement = document.querySelector('#details');
 
     document.title = `${name} | Trello`;
 
     detailsElement.innerHTML = `
         <h1 class="board-title p-2 text-white text-shadow font-weight-bold">${name}</h1>
+        ${renderMembers({ members })}
     `
 }
 
