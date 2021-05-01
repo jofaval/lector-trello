@@ -42,3 +42,8 @@ body
 {
     font-size: small;
 }
+
+.modal-container .modal
+{
+    overflow-y: auto;
+}
