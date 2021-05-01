@@ -11,7 +11,7 @@ export const render = data => {
     const lists = renderLists(data);
     contentElement.innerHTML += lists;
 
-    const backgroundImage = renderBackgroundImage(data)
+    const background = renderBackground(data)
     const details = renderDetails(data)
 
     return lists
@@ -23,9 +23,9 @@ export const render = data => {
  * @param {object} data 
  * @returns 
  */
-const renderBackgroundImage = data => {
-    const { bgImage } = data;
+const renderBackground = ({ bgImage, bgColor }) => {
     document.body.style.backgroundImage = `url("${bgImage}")`;
+    document.body.style.backgroundColor = `${bgColor}`;
 }
 
 /**

@@ -15,6 +15,7 @@ export const parse = data => {
     const cards = parseCards(data, labels, checklists, comments)
     const lists = parseLists(data, cards)
     const bgImage = parseBackgroundImage(data)
+    const bgColor = parseBackgroundColor(data)
 
     return {
         'details': details,
@@ -26,6 +27,7 @@ export const parse = data => {
         'cards': cards,
         'lists': lists,
         'bgImage': bgImage,
+        'bgColor': bgColor,
     }
 };
 
@@ -37,6 +39,16 @@ export const parse = data => {
  */
 const parseBackgroundImage = data => {
     return data?.prefs?.backgroundImage
+}
+
+/**
+ * Extrae el color de fondo del tablero
+ * 
+ * @param {object} data 
+ * @returns string
+ */
+const parseBackgroundColor = data => {
+    return data?.prefs?.backgroundColor
 }
 
 /**
