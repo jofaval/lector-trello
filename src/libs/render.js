@@ -66,11 +66,11 @@ const renderLists = ({ lists }) => {
  * @param {object} data 
  * @returns 
  */
-const renderList = ({ name, cards: listCards }) => {
+const renderList = ({ name, cards: listCards, id }) => {
     const cards = listCards?.filter(({ closed }) => !closed)?.map(renderCard).join('')
 
     return `<div class="list-container m-1">
-        <div class="list shadow-sm border rounded p-2">
+        <div class="list shadow-sm border rounded p-2" id="${id}">
             <p class="list-title">${name}</p>
             <div class="list-items">
                 ${cards}
@@ -88,7 +88,7 @@ const renderList = ({ name, cards: listCards }) => {
 const renderCard = card => {
     // console.log('card JSON', card);
 
-    const { name } = card;
+    const { id, name } = card;
 
     const parsedCard = JSON.stringify( // Convierte a string
         JSON.stringify(card) // Convierte a objeto JSON
@@ -97,7 +97,7 @@ const renderCard = card => {
 
     const labels = renderLabels(card)
 
-    return `<div class="list-card bg-light shadow-sm rounded p-2 mt-2"
+    return `<div class="list-card bg-light shadow-sm rounded p-2 mt-2" id="${id}"
         onclick='openModal(this)' card='${parsedCard}' data-modal-trigger="modal-card">
         ${labels}
         <p class="list-card-title">${name}</p>
