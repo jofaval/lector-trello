@@ -50,8 +50,10 @@ export const renderAction = ({ id, member, type, data, date }) => {
 
     const finalString = `Se ha ${type} ${actionDetail} ${cardString} ${listString} ${checklistString} el ${date}`
 
-    return `<div class="action m-2 p-3" id="${id}">
-        ${renderMember(member)}
+    return `<div class="action d-flex m-2 p-3" id="${id}">
+        <div class="action-creator">
+            ${renderMember(member)}
+        </div>
         <span class="action-detial">${finalString}</span>
     </div>`
 }
