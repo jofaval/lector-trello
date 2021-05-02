@@ -1,3 +1,4 @@
+import renderActions from "../components/action.js";
 import renderLabels from "../components/label.js";
 import renderLists from "../components/list.js";
 import renderMembers from "../components/member.js";
@@ -17,6 +18,9 @@ export const render = data => {
     // Se añade el contenido mapeado de las listas a content
     const lists = renderLists(data);
     contentElement.innerHTML = lists;
+
+    // Se renderizan las acciones en el sidebar
+    renderSidebar(data);
 
     return lists
 }
@@ -54,6 +58,15 @@ const renderDetails = ({ details: { name, desc }, members, labels }) => {
         ${renderMembers({ members })}
         ${renderLabels({ labels })}
     `
+}
+
+const renderSidebar = data => {
+    const sidebar = document.querySelector('sidebar#sidebar');
+
+    const actions = renderActions(data);
+    sidebar.innerHTML = `${actions}`
+
+    return actions;
 }
 
 export default render
