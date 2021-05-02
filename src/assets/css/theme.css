@@ -138,3 +138,7 @@ html, body
 .label.black {
     background-color: #344563;
 }
+
+.font-weight-bold {
+	font-weight: bold;
+}
