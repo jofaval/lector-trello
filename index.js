@@ -2,7 +2,7 @@ import { filename } from "./config.js";
 import leerContenidoDelFichero from "./src/libs/lector.js";
 import parse from "./src/libs/parser.js";
 import render from "./src/libs/render.js";
-import scrollWithMouse from "./src/libs/scroll.js";
+import scrollWithMouse from "./src/interaction/scroll.js";
 
 /**
  * Carga el contenido del fichero JSON en el DOM
