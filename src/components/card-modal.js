@@ -14,6 +14,12 @@ export const renderCardModal = json => {
     return renderModal(json);
 }
 
+/**
+ * Renderiza visualmente el contenido de la tarjeta
+ * 
+ * @param {object} card 
+ * @returns string
+ */
 const renderCard = json => {
     const { name, desc } = json
     const labels = renderLabels(json)
@@ -31,6 +37,12 @@ const renderCard = json => {
     `
 }
 
+/**
+ * Renderiza visualmente el modal con todo el contenido
+ * 
+ * @param {object} json 
+ * @returns string
+ */
 const renderModal = json => {
     const { name, desc } = json
 

@@ -3,8 +3,8 @@ import renderCard from "./card.js"
 /**
  * Representa visualmente una lista del tablero
  * 
- * @param {object} data 
- * @returns 
+ * @param {object} list 
+ * @returns stirng
  */
  export const renderList = ({ name, cards: listCards, id }) => {
     const cards = listCards?.filter(({ closed }) => !closed)?.map(renderCard).join('')
@@ -23,7 +23,7 @@ import renderCard from "./card.js"
  * Representa visualmente las listas del tablero
  * 
  * @param {object} data 
- * @returns 
+ * @returns stirng
  */
  export const renderLists = ({ lists }) => {
     return lists?.filter(({ closed }) => !closed)?.map(renderList).join('')

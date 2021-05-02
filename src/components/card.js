@@ -3,8 +3,8 @@ import renderLabels from "./label.js";
 /**
  * Representa visualmente las tarjetas del tablero
  * 
- * @param {object} data 
- * @returns 
+ * @param {object} card 
+ * @returns string
  */
 export const renderCard = card => {
     // console.log('card JSON', card);

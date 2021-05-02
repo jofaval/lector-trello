@@ -1,7 +1,7 @@
 import { renderMember } from "./member.js";
 
 /**
- * Renderiza una sola acción
+ * Renderiza visualmente una sola acción
  * 
  * @param {object} action 
  * @returns string
@@ -63,7 +63,7 @@ export const renderAction = ({ id, member, type, data, date }) => {
 }
 
 /**
- * Renderiza todas las acciones
+ * Renderiza visualmente todas las acciones
  * 
  * @param {object} data 
  * @returns string
