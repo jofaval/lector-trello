@@ -1,3 +1,9 @@
+:root
+{
+    --sidebar-width: max(25vw, 300px);
+    --content-width: calc(100vw - var(--sidebar-width));
+}
+
 html, body
 {
     background-attachment: fixed;
@@ -12,6 +18,18 @@ html, body
     flex-direction: row;
     overflow-x: auto;
     height: calc(85vh - 52px);
+    width: calc(var(--content-width) - max(1vw, 25px));
+}
+
+#sidebar
+{
+    margin-left: var(--content-width);
+    width: var(--sidebar-width);
+    max-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
 }
 
 .list-container
