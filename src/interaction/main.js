@@ -55,3 +55,23 @@ let stopPropagation = function (evt) {
 
     return false;
 }
+
+/**
+ * Oculta o muestra el sidebar con todas las acciones
+ * 
+ * @param {event} evt 
+ * @returns void
+ */
+let toggleSidebar = evt => {
+    // Se coge el evento de verdad por si se necesita
+    const event = evt || window.event;
+
+    // Se recupera el botón de la acción
+    const btnSidebar = document.querySelector('#btnSidebar');
+
+    // Se recupera el body
+    const body = document.body;
+    
+    // Hace el tooggle del .show-sidebar
+    body.classList.toggle('show-sidebar');
+}
