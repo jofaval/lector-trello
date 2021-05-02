@@ -8,9 +8,9 @@ export const parse = data => {
     const details = parseDetails(data),
     labels        = parseLabels(data),
     checklists    = parseChecklist(data),
-    actions       = parseActions(data),
     members       = parseMembers(data),
     membership    = parseMembership(data),
+    actions       = parseActions(data, members),
     comments      = parseComments(data, actions, members),
     cards         = parseCards(data, labels, checklists, comments, members),
     lists         = parseLists(data, cards),
@@ -98,7 +98,12 @@ const parseChecklist = data => data?.checklists?.map(({ name, id, idCard, pos, c
  * @param {object} data 
  * @returns object
  */
-const parseActions = ({ actions }) => actions
+const parseActions = ({ actions }, members) =>
+actions.map(action => {
+    const { idMemberCreator } = action;
+    const member = members?.find(({ id }) => id == idMemberCreator);
+    return { ...action, member }
+})
 
 /**
  * Extrae los comentarios del tablero
