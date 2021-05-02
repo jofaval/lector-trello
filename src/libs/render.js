@@ -1,4 +1,5 @@
 import renderActions from "../components/action.js";
+import renderBtnSidebar from "../components/button/btnSidebar.js";
 import renderLabels from "../components/label.js";
 import renderLists from "../components/list.js";
 import renderMembers from "../components/member.js";
@@ -54,8 +55,9 @@ const renderDetails = ({ details: { name, desc }, members, labels }) => {
     document.title = `${name} | Trello`;
 
     detailsElement.innerHTML = `
-        <h1 class="board-title p-2 text-white text-shadow font-weight-bold">${name}</h1>
+        <h1 class="board-title d-inline-block p-2 text-white text-shadow font-weight-bold">${name}</h1>
         ${renderMembers({ members })}
+        ${renderBtnSidebar()}
         ${renderLabels({ labels })}
     `
 }
