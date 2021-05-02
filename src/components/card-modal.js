@@ -54,9 +54,9 @@ const renderModal = json => {
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">${name}</h5>
-                    ${members}
                     <button type="button" class="btn-close" data-bs-dismiss="modal-card" onclick="closeCardModal()" aria-label="Close"></button>
                 </div>
+                <div class="card-members p-3 pb-0">${members}</div>
                 <div class="modal-body">
                     ${renderCard(json)}
                 </div>

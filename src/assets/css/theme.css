@@ -38,6 +38,26 @@ body.show-sidebar #content
     top: 0;
 }
 
+.members .member a
+{
+    min-width: unset !important;
+}
+
+.members .member:not(:first-of-type)
+{
+    margin-left: -15px !important;
+}
+
+.modal .members
+{
+    margin-bottom: unset !important;
+}
+
+.modal .members .member:not(:first-of-type)
+{
+    margin-left: unset !important;
+}
+
 body.show-sidebar #sidebar
 {
     width: var(--sidebar-width);
