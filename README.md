@@ -21,6 +21,7 @@ Detalles del tablero, Las etiquetas, Listas de tareas, Acciones de los miembros,
 ### ¿Cómo funciona?
  - Se ha de crear a nivel raíz un fichero *config.js*
  - Dichero fichero contendrá la ruta al /data/trello.json
+    - Se aconseja crear una carpeta a nivel raíz llamada *data* para todos los ficheros
 
 *Contenido del fichero *config.js*:*
 
