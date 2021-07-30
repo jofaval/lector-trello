@@ -4,6 +4,6 @@
  * @returns string
  */
  export const renderFileImporter = () => 
- `<input type="file" placeholder="Seleccione el archivo a cargar" id="fileImporter" name="fileImporter" />`;
+ `<input type="file" placeholder="Seleccione el archivo a cargar" accept="application/json" id="fileImporter" name="fileImporter" />`;
  
  export default renderFileImporter;
