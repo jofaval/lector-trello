@@ -1,4 +1,4 @@
-import { filename } from "./config.js";
+import { filename, loadOnStart } from "./config.js";
 import leerContenidoDelFichero from "./src/libs/lector.js";
 import parse from "./src/libs/parser.js";
 import render from "./src/libs/render.js";
@@ -28,7 +28,7 @@ const init = async (ruta = null, content = null) => {
 }
 
 // Siempre se inicia por defecto al terminar de cargar la página
-init();
+if(loadOnStart) init();
 
 // Se añade el evento de scroll principal
 document.addEventListener('DOMContentLoaded', scrollWithMouse);

@@ -25,9 +25,23 @@ Detalles del tablero, Las etiquetas, Listas de tareas, Acciones de los miembros,
 
 *Contenido del fichero *config.js*:*
 
+    /**
+    * El nombre del fichero de carga por defecto
+    * 
+    * @type {String}
+    */
     export const filename = '/data/fichero-trello.json'
 
     console.log('filename', filename);
+
+    /**
+    * Indica si se iniciará la carga de un fichero por defecto
+    * 
+    * @type {Boolean}
+    */
+    export const loadOnStart = true;
+    
+    console.log('loadOnStart', loadOnStart);
 
     // En caso de querer configurar la apertura inmediata de una tarjeta
     document.querySelectorAll('.list-card')[num_tarjeta].click()
