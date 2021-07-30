@@ -3,7 +3,7 @@ Tiene como objetivo poder visualizar el tablero de **Trello** a través de un ar
 
 *Por comidad, primero leerá el archivo de local, más adelante podría leerlo de un selector de ficheros*
 
-Para crear un tablero dirígete a [Trello](https://trello.com)
+Para crear un tablero dirígete a [Trello](https://trello.com), para el servidor en producción, [trello.jofaval.com](trello.jofaval.com)
 
 ## Objetivos
  - Poder asociar de manera adecuada y cómoda el JSON exportado de cualquier tablero de Trello.
