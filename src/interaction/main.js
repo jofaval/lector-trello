@@ -116,7 +116,10 @@ let toggleSidebar = evt => {
  */
 const onFileRead = (result) => {
     result = result.split(',')[1];
-    const parsedJSON = JSON.parse( atob(result) );
+    const decodedResult = decodeURIComponent(atob(result).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    const parsedJSON = JSON.parse(decodedResult);
     console.log('contenido parseado', parsedJSON);
 
     init(null, parsedJSON);
