@@ -60,7 +60,7 @@ export const renderAction = ({ id, member, type, data, date }) => {
             <span class="action-detail-content">${finalString}</span>
         </span>
     </div>`
-}
+};
 
 /**
  * Renderiza visualmente todas las acciones
@@ -69,6 +69,6 @@ export const renderAction = ({ id, member, type, data, date }) => {
  * @returns string
  */
 export const renderActions = ({ actions }) =>
-`<div class="actions">${actions?.map(renderAction).join('')}</div>`
+`<div class="actions">${actions?.map(renderAction).join('')}</div>`;
 
 export default renderActions;

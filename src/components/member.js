@@ -16,7 +16,7 @@ export const renderMember = ({ id, url, fullName, initials, avatarUrl }) =>
     <a href="${url}" style="min-width: 50px" class="btn p-0 m-0 text-dark" title='${fullName}' onclick="window.open('${url}', '_blank')">
         <img class="img bg-white rounded-circle" width="${radius}" height="${radius}" src="${avatarUrl}/original.png" alt='${initials}'>
     </a>
-</div>`
+</div>`;
 
 /**
  * Renderiza visualmente a todos los miembros
@@ -24,6 +24,6 @@ export const renderMember = ({ id, url, fullName, initials, avatarUrl }) =>
  * @param {object} data 
  * @returns string
  */
-export const renderMembers = ({ members }) => `<div class="members mb-3 d-inline-flex">${members?.map(renderMember)?.join('')}</div>`
+export const renderMembers = ({ members }) => `<div class="members mb-3 d-inline-flex">${members?.map(renderMember)?.join('')}</div>`;
 
 export default renderMembers;

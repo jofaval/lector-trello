@@ -12,7 +12,7 @@ import renderMembers from "./member.js";
  */
 export const renderCardModal = json => {
     return renderModal(json);
-}
+};
 
 /**
  * Renderiza visualmente el contenido de la tarjeta

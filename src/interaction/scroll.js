@@ -71,6 +71,6 @@ export const scrollWithMouse = () => {
 
     // Attach the handler
     element.addEventListener('mousedown', mouseDownHandler);
-}
+};
 
 export default scrollWithMouse;

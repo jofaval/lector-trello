@@ -17,7 +17,7 @@ import renderCard from "./card.js"
             </div>
         </div>
     </div>`
-}
+};
 
 /**
  * Representa visualmente las listas del tablero
@@ -27,6 +27,6 @@ import renderCard from "./card.js"
  */
  export const renderLists = ({ lists }) => {
     return lists?.filter(({ closed }) => !closed)?.map(renderList).join('')
-}
+};
 
-export default renderLists
+export default renderLists;

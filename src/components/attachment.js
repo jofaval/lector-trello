@@ -9,7 +9,7 @@ export const renderAttachment = ({ id, idMember, name, url, fileName, date, mime
     <a href="${url}" class="btn text-gray" onclick="window.open('${url}', '_blank')">
         <span class="attachment-title">${name ? name : fileName}</span>
     </a>
-</div>`
+</div>`;
 
 /**
  * Renderiza visualmente todos los archivos adjuntos
@@ -23,6 +23,6 @@ export const renderAttachments = ({ attachments }) =>
     <div class="attachment-files">
         ${attachments?.map(renderAttachment).join('')}
     </div>
-</div>`
+</div>`;
 
-export default renderAttachments
+export default renderAttachments;

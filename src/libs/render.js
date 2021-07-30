@@ -24,7 +24,7 @@ export const render = data => {
     renderSidebar(data);
 
     return lists
-}
+};
 
 /**
  * Representa visualmente la imagen de fondo del tablero
@@ -41,7 +41,7 @@ const renderBackground = ({ bgImage, bgColor }) => {
 
     element.style.backgroundColor = `${bgColor}`;
     document.body.style.backgroundColor = `${bgColor}`;
-}
+};
 
 /**
  * Representa visualmente los detalles del tablero
@@ -60,7 +60,7 @@ const renderDetails = ({ details: { name, desc }, members, labels }) => {
         ${renderBtnSidebar()}
         ${renderLabels({ labels })}
     `
-}
+};
 
 const renderSidebar = data => {
     const sidebar = document.querySelector('sidebar#sidebar');
@@ -69,6 +69,6 @@ const renderSidebar = data => {
     sidebar.innerHTML = `${actions}`
 
     return actions;
-}
+};
 
-export default render
+export default render;

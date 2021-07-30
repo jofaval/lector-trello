@@ -6,6 +6,6 @@
 export const renderBtnSidebar = () => 
 `<button id="btnSidebar" class="btn btn-primary" onclick="toggleSidebar()">
     Sidebar
-</button>`
+</button>`;
 
 export default renderBtnSidebar;

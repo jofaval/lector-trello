@@ -10,7 +10,7 @@ export const renderChecklistItem = ({ id, name, state }) =>
         <input class="form-check-input" type="checkbox" ${state ? 'checked' : ''} id="${id}">
         <label class="form-check-label mb-0" for="${id}">${marked(name)}</label>
     </div>
-</div>`
+</div>`;
 
 /**
  * Renderiza visualmente una lista de tareas
@@ -33,4 +33,4 @@ export const renderChecklist = ({ id, name, checkItems }) =>
 export const renderChecklists = ({ checklists }) => 
 `<div class="checklist">${checklists.map(renderChecklist).join('')}</div>`;
 
-export default renderChecklists
+export default renderChecklists;

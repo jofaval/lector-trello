@@ -5,7 +5,7 @@
  * @returns string
  */
 export const renderLabel = ({ name, color }) =>
-`<span class="badge label ${color}">${name}</span>`
+`<span class="badge label ${color}">${name}</span>`;
 
 /**
  * Renderiza visualmente todas las etiquetas
@@ -14,6 +14,6 @@ export const renderLabel = ({ name, color }) =>
  * @returns string
  */
 export const renderLabels = ({ labels }) =>
-`<div class="labels">${labels?.map(renderLabel)?.join('')}</div>`
+`<div class="labels">${labels?.map(renderLabel)?.join('')}</div>`;
 
-export default renderLabels
+export default renderLabels;

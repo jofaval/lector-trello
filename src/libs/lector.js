@@ -14,7 +14,7 @@ export const leerContenidoDelFichero = async ruta => {
     // console.log('respuesta', content);
 
     return content;
-}
+};
 
 /**
  * Se ejecuta cuando se ha terminado de leer el fichero,
@@ -27,7 +27,7 @@ const onLecturaFichero = async _res => {
     // console.log('respuesta', _res);
 
     return _res?.json().then(data => data)
-}
+};
 
 /**
  * Se ejecuta cuando ocurre un error en la lectura del fichero
@@ -37,6 +37,6 @@ const onLecturaFichero = async _res => {
  */
 const onLecturaFicheroError = _res => {
     console.error('error respuesta', _res);
-}
+};
 
 export default leerContenidoDelFichero;

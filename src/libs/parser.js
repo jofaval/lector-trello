@@ -26,7 +26,7 @@ export const parse = data => {
  * @param {object} data 
  * @returns string
  */
-const parseBackgroundImage = ({ prefs: { backgroundImage } }) => backgroundImage
+const parseBackgroundImage = ({ prefs: { backgroundImage } }) => backgroundImage;
 
 /**
  * Extrae el color de fondo del tablero
@@ -34,7 +34,7 @@ const parseBackgroundImage = ({ prefs: { backgroundImage } }) => backgroundImage
  * @param {object} data 
  * @returns string
  */
-const parseBackgroundColor = ({ prefs: { backgroundColor } }) => backgroundColor
+const parseBackgroundColor = ({ prefs: { backgroundColor } }) => backgroundColor;
 
 /**
  * Extrae los detalles del tablero
@@ -46,7 +46,7 @@ const parseDetails = data => {
     const { id, idMemberCreator, dateLastActivity, name, desc, url, shortUrl } = data;
 
     return { id, idMemberCreator, dateLastActivity, name, desc, url, shortUrl };
-}
+};
 
 /**
  * Extrae las etiquetas del tablero
@@ -57,7 +57,7 @@ const parseDetails = data => {
 const parseLabels = data => data?.labels?.map((label) => {
     const { name, color, id } = label;
     return { name, color, id }
-})
+});
 
 /**
  * Extrae los miembros del tablero
@@ -65,7 +65,7 @@ const parseLabels = data => data?.labels?.map((label) => {
  * @param {object} data 
  * @returns object
  */
-const parseMembers = ({ members }) => members
+const parseMembers = ({ members }) => members;
 
 /**
  * Extrae los roles del tablero
@@ -73,7 +73,7 @@ const parseMembers = ({ members }) => members
  * @param {object} data 
  * @returns object
  */
-const parseMembership = ({ memberships }) => memberships
+const parseMembership = ({ memberships }) => memberships;
 
 /**
  * Extrae las listas de tareas del tablero
@@ -90,7 +90,7 @@ const parseChecklist = data => data?.checklists?.map(({ name, id, idCard, pos, c
     })
 
     return { id, idCard, name, pos, checkItems: mappedCheckItems }
-})
+});
 
 /**
  * Extrae las acciones del tablero
@@ -103,7 +103,7 @@ actions.map(action => {
     const { idMemberCreator } = action;
     const member = members?.find(({ id }) => id == idMemberCreator);
     return { ...action, member }
-})
+});
 
 /**
  * Extrae los comentarios del tablero
@@ -122,7 +122,7 @@ const parseComments = (data, actions, members) => {
 
         return { id, idCard, idMemberCreator, member, text };
     })
-}
+};
 
 /**
  * Extrae las tarjetas del tablero
@@ -154,7 +154,7 @@ const parseCards = (data, labels, checklists, comments, members) => data?.cards.
         labels: mappedLabels, checklists: mappedChecklists,
         idList, desc, comments: mappedComments, closed, members: mappedMembers
     }
-})
+});
 
 /**
  * Extrae las listas del tablero
@@ -168,6 +168,6 @@ const parseLists = (data, cards) => data?.lists?.map(list => {
     const listCards = cards?.filter(({ idList }) => idList == id)
 
     return { ...list, cards: listCards }
-})
+});
 
 export default parse;

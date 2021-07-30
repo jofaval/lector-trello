@@ -14,7 +14,7 @@ export const renderComment = ({ id, member, text }) =>
     <div class="comment-content border bg-white w-100 shadow-sm p-3">
         ${marked(text.replaceAll('\n', `<br />`))}
     </div>
-</div>`
+</div>`;
 
 /**
  * Renderiza visualmente todos los comentarios
@@ -23,6 +23,6 @@ export const renderComment = ({ id, member, text }) =>
  * @returns string 
  */
 export const renderComments = ({ comments }) => 
-`<div class="comments">${comments?.map(renderComment).join('')}</div>`
+`<div class="comments">${comments?.map(renderComment).join('')}</div>`;
 
-export default renderComments
+export default renderComments;

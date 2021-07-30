@@ -23,6 +23,6 @@ export const renderCard = card => {
         ${labels}
         <p class="list-card-title">${name}</p>
     </div>`
-}
+};
 
-export default renderCard
+export default renderCard;
