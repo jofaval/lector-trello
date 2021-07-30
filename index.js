@@ -11,7 +11,7 @@ import scrollWithMouse from "./src/interaction/scroll.js";
  * @param {object} content
  * @returns void
  */
-const init = async (ruta = null, content = null) => {
+init = async (ruta = null, content = null) => {
     // Se lee el contenido del fichero
     let result = content ? content : await leerContenidoDelFichero(
         ruta ? ruta : filename
