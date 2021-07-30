@@ -75,3 +75,64 @@ let toggleSidebar = evt => {
     // Hace el tooggle del .show-sidebar
     body.classList.toggle('show-sidebar');
 }
+
+/**
+ * Lee el contenido de un fichero
+ * 
+ * @param {*} file El fichero a leer
+ * @param {event} onLoad El evento para cuando se haya terminado de leer
+ * 
+ * @returns {void}
+ */
+ const readFile = (file, onLoad) => {
+    const reader = new FileReader();
+
+    console.log('Leyendo fichero');
+
+    reader.addEventListener('load', (event) => {
+        const result = event.target.result;
+        console.log('Fichero leído, contenido:', result);
+        // Do something with result
+
+        if (onLoad) onLoad(result);
+    });
+
+    reader.addEventListener('progress', (event) => {
+        if (event.loaded && event.total) {
+            const percent = (event.loaded / event.total) * 100;
+            console.log(`Progress: ${Math.round(percent)}`);
+        }
+    });
+
+    reader.readAsDataURL(file);
+};
+
+/**
+ * Se ejecuta cuando se ha terminado de leer el contenido de un fichero
+ * 
+ * @param {JSON} result El contenido del fichero
+ * 
+ * @returns {void}
+ */
+const onFileRead = (result) => {
+    result = result.split(',')[1];
+    const parsedJSON = JSON.parse( atob(result) );
+    console.log('contenido parseado', parsedJSON);
+
+    init(null, parsedJSON);
+};
+
+/**
+ * Detecta que se ha subido un nuevo fichero y lo intenta procesar
+ * 
+ * @returns {void}
+ */
+let filechange = () => {
+    const fileList = event.target.files;
+    console.log(fileList, fileList);
+    const file = fileList[0];
+
+    console.log('Fichero subido');
+    readFile(file, onFileRead);
+    // alert($(this).val());
+};
