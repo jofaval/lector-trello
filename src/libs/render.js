@@ -63,7 +63,7 @@ const renderDetails = ({ details: { name, desc }, members, labels }) => {
 };
 
 const renderSidebar = data => {
-    const sidebar = document.querySelector('sidebar#sidebar');
+    const sidebar = document.querySelector('#sidebar');
 
     const actions = renderActions(data);
     sidebar.innerHTML = `${actions}`
