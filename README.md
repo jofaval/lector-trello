@@ -9,7 +9,7 @@ Para crear un tablero dirígete a [Trello](https://trello.com), para el servidor
  - Poder asociar de manera adecuada y cómoda el JSON exportado de cualquier tablero de Trello.
  - Generar la vista del tablero con cierta interacción de usuario.
  - Permitir la visualización de tableros en una fecha en concreto.
- - Poder exportar un tablero y crear otros dentro del plan gratuito si perder acceso a la información.
+ - Poder exportar un tablero y crear otros dentro del plan gratuito sin perder acceso a la información.
 
 ### Parsear
 Detalles del tablero *(título, descripción, etc.)*, Las etiquetas, Listas de tareas, Acciones de los miembros, Comentarios de las tarjetas, Miembros, Roles de miembros, Listas, Tarjetas, Imagen de fondo
