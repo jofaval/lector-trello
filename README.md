@@ -1,9 +1,8 @@
 # Lector de Trello
 Tiene como objetivo poder visualizar el tablero de **Trello** a través de un archivo JSON
 
-*Por comidad, primero leerá el archivo de local, más adelante podría leerlo de un selector de ficheros*
-
-Para crear un tablero dirígete a [Trello](https://trello.com), para el servidor en producción, [trello.jofaval.com](http://trello.jofaval.com)
+Para crear un tablero dirígete a [Trello](https://trello.com), para el [servidor en producción](https://trello.jofaval.com).
+Para el registro de versiones de cambios, [clica aquí](./CHANGELOG.md)
 
 ## Objetivos
  - Poder asociar de manera adecuada y cómoda el JSON exportado de cualquier tablero de Trello.
