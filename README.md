@@ -4,6 +4,8 @@ Tiene como objetivo poder visualizar el tablero de **Trello** a través de un ar
 Para crear un tablero dirígete a [Trello](https://trello.com), para el [servidor en producción](http://trello.jofaval.com).
 Para el registro de versiones de cambios, [clica aquí](./CHANGELOG.md)
 
+<img src="./img/cover.png" alt="Cover">
+
 ## Objetivos
  - Poder asociar de manera adecuada y cómoda el JSON exportado de cualquier tablero de Trello.
  - Generar la vista del tablero con cierta interacción de usuario.
