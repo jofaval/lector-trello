@@ -14,7 +14,6 @@ export const renderAction = ({ id, member, type, data, date }) => {
         const { text } = data;
 
         const preprocessedText = text.replaceAll('\n', '<br />')
-        // const finalText = marked && typeof marked === 'function' ? marked.parse(preprocessedText) : preprocessedText;
         const finalText = marked.parse(preprocessedText);
 
         actionDetail = `con el contenido <div class="card w-100 p-3">${finalText}</div>`;
