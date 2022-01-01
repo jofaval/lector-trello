@@ -12,7 +12,7 @@ export const renderComment = ({ id, member, text }) =>
         ${renderMember(member)}
     </div>
     <div class="comment-content border bg-white w-100 shadow-sm p-3">
-        ${marked(text.replaceAll('\n', `<br />`))}
+        ${marked.parse(text.replaceAll('\n', `<br />`))}
     </div>
 </div>`;
 

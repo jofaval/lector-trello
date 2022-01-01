@@ -12,7 +12,12 @@ export const renderAction = ({ id, member, type, data, date }) => {
     // Si se ha encontrado texto, se usa
     if ("text" in data) {
         const { text } = data;
-        actionDetail = `con el contenido <div class="card w-100 p-3">${marked(text.replaceAll('\n', '<br />'))}</div>`;
+
+        const preprocessedText = text.replaceAll('\n', '<br />')
+        // const finalText = marked && typeof marked === 'function' ? marked.parse(preprocessedText) : preprocessedText;
+        const finalText = marked.parse(preprocessedText);
+
+        actionDetail = `con el contenido <div class="card w-100 p-3">${finalText}</div>`;
     }
 
     // Se si ha realizado dentro de una tarjeta se indica

@@ -8,7 +8,7 @@ export const renderChecklistItem = ({ id, name, state }) =>
 `<div class="checklist-item">
     <div class="form-check">
         <input class="form-check-input" type="checkbox" ${state ? 'checked' : ''} id="${id}">
-        <label class="form-check-label mb-0" for="${id}">${marked(name)}</label>
+        <label class="form-check-label mb-0" for="${id}">${marked.parse(name)}</label>
     </div>
 </div>`;
 

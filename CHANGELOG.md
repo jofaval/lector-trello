@@ -5,6 +5,9 @@ Todos los cambios notables quedarán registrados en este archivo, siendo los má
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 y el proyecto se adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0](https://github.com/jofaval/lector-trello/releases/tag/v.0.4.0) - 2022-01-01
+Se ha arreglado el bug que impedía el uso de la librería esencial `marked`
+
 ## [0.3.0](https://github.com/jofaval/lector-trello/releases/tag/v.0.3.0) - 2021-07-30
 Se ha añadido la carga del fichero JSON sin necesidad del uso del archivo config, ahora se puede usar un input[file]
 

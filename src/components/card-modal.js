@@ -29,7 +29,7 @@ const renderCard = json => {
 
     return `
         ${labels}
-        <p>${marked(desc)}</p>
+        <p>${marked.parse(desc)}</p>
         ${json?.attachments && json?.attachments.length ? attachments : attachments}
         ${checklists}
         <div class="py-3 w-100">&nbsp;</div>
